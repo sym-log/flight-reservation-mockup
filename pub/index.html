@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="UTF-8"></meta>
+    <title>Flight Reservation Mockup</title>
+
+  <link rel="stylesheet" href="css/menu.css">
+  <link rel="stylesheet" href="/css/menuitem.css">
+  <link rel="stylesheet" href="/css/menuseparator.css">
+  <link rel="stylesheet" href="/css/combobox.css">
+  <link rel="stylesheet" href="/css/datepicker.css">
+  <link rel="stylesheet" href="/css/inputdatepicker.css">
+  <link rel="stylesheet" href="/css/loading.css">
+  <style>
+   img {vertical-align:bottom;}
+ </style>
+
+</head>
+
+
+<body onload="mock1.appInit();">
+
+ <script type="text/javascript" src="code/index.js"></script>
+ <script type="text/javascript" src="code/pouchdb-nightly.js"></script> 
+ 
+
+<div id="containerDiv" style="height:100%; width:100%;"> 
+
+ <div id="logoDiv" style="width:740px; height:628px; position:absolute; left:50%; top:50%; margin:-314px 0 0 -370px; z-index:1; overflow:hidden;">  </div>
+
+ <div id="actionDiv" style="width:520px; height:460px; position:absolute; left:50%; top:50%; margin:-230px 0 0 -260px; background-color:white;   z-index:10;">
+
+  <div id="departingDiv" class="combo" style=" border:1px solid gray; width: 240px; height: 20px; float:left; " > </div>
+
+   <div style=" border:1px solid gray; float:left; position:absolute; background-color:#6699ff; margin-left: 244px;  width:30px;  height: 94px; float:left;" onclick="mock1.load_flight_confirmation();" id="bookitDiv">
+
+   <svg style="margin-top:50px;" width="30" height="44" xmlns="http://www.w3.org/2000/svg">
+    <g>
+ 
+     <path opacity="0.23707" d="m26.83082,31.32987l-11.60299,9.21018l-0.09647,0.07658l0,0.00002l0,0l-0.11578,-0.09191l-11.58905,-9.19868" stroke="#000" stroke-miterlimit="4" stroke-width="4.76" fill="none" id="svg_1"/>
+     <path opacity="0.23707" d="m26.83082,10.21755l-11.60299,9.21022l-0.09647,0.07658l0,0l0,0l-0.11578,-0.09192l-11.58905,-9.19869" stroke="#000" stroke-miterlimit="4" stroke-width="4.76" fill="none" id="svg_2"/>
+     <path opacity="0.23707" d="m26.83082,20.81011l-11.60299,9.21025l-0.09647,0.07658l0,0.00002l0,0l-0.11578,-0.09191l-11.58905,-9.19874" stroke="#000" stroke-miterlimit="4" stroke-width="4.76" fill="none" id="svg_3"/>
+   </g>
+
+  </svg>
+ </div>
+
+   <div style=" border:1px solid gray; width: 240px; height: 20px;  float:right;" id="arrivingDiv"></div>
+
+   <div style=" border:1px solid gray; margin-top:26px; position:absolute; width: 240px; height: 20px;" id="departureDateDiv"><input style="border:0; vertical-align:top; height:18px; width:240px; " autocomplete="off" placeholder="Departure Date" id="departureDateField"></div>
+
+
+   <div style=" border:1px solid gray; margin-top:4px; width: 240px; height: 20px;  float:right;" id="arrivalDateDiv"><input style="border:0; vertical-align:top; height:18px; width:240px; " autocomplete="off" placeholder="Arrival Date" id="arrivalDateField"></div>
+
+   <div style="width: 240px; height:0px;  margin-top:28px; float:left;" id="departureWeatherDiv">
+
+
+<div id="text1" style="display:none; position:absolute; margin-top:8px; font-size:14px; color:gray; font-family:Arial,Helvetica,sans-serif; margin-left:20px;"> Departure City Weather is Sunny</div>
+<div id="floatingCirclesGone" style="position:absolute; margin-left:110px;  display:none; ">
+<div class="f_circleG" id="frotateG_01">
+</div>
+<div class="f_circleG" id="frotateG_02">
+</div> 
+<div class="f_circleG" id="frotateG_03">
+</div>
+<div class="f_circleG" id="frotateG_04">
+</div>
+<div class="f_circleG" id="frotateG_05">
+</div>
+<div class="f_circleG" id="frotateG_06">
+</div>
+<div class="f_circleG" id="frotateG_07">
+</div>
+<div class="f_circleG" id="frotateG_08">
+</div>
+</div> 
+
+</div>
+
+ <div style=" margin-top:2px; width: 240px; height: 0px;  float:right;" id="arrivalWeatherDiv">
+<div id="text2" style="margin-top:8px; margin-left:30px; font-size:14px; color:gray; font-family:Arial,Helvetica,sans-serif; position:absolute; display:none;"> Arrival  City Weather is Rainy</div>
+
+
+<div id="floatingCirclesGtwo" style="position:absolute; margin-left:110px;  display:none">
+<div class="f_circleG" id="frotateG_01">
+</div>
+<div class="f_circleG" id="frotateG_02">
+</div>
+<div class="f_circleG" id="frotateG_03">
+</div>
+<div class="f_circleG" id="frotateG_04">
+</div>
+<div class="f_circleG" id="frotateG_05">
+</div>
+<div class="f_circleG" id="frotateG_06">
+</div>
+<div class="f_circleG" id="frotateG_07">
+</div>
+<div class="f_circleG" id="frotateG_08">
+</div>
+</div> 
+
+</div>
+
+   <div id="actionWindow" style=" border:1px solid gray; margin-top:3px; width: 518px; height: 405px;  float:right; background-color:white;" >
+
+<div id="contentDiv" style="position:absolute; width:100%; height:100%; display:none" >
+
+<div style="margin-top:135px;">
+   <h style="margin-left:100px; font-size:40px; color:gray; font-family:Arial,Helvetica,sans-serif;"> Flight Is Confirmed</h>
+</div>
+</div>
+<div id="circleLoadDiv" style="margin-left:160px; margin-top:70px; display:none">
+<div id="circularG" style="position:absolute;">
+<div id="circularG_1" class="circularG">
+</div>
+<div id="circularG_2" class="circularG">
+</div>
+<div id="circularG_3" class="circularG">
+</div>
+<div id="circularG_4" class="circularG">
+</div>
+<div id="circularG_5" class="circularG">
+</div>
+<div id="circularG_6" class="circularG">
+</div>
+<div id="circularG_7" class="circularG">
+</div>
+<div id="circularG_8" class="circularG">
+</div>
+</div> 
+
+</div>
+
+</div>
+</div>
+</div>   
+
+
+
+ </body>
+</html>
+
